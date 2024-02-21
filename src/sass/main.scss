@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '../style.css';
+
+:root {
+  --50: #effef6;
+  --50-op: 239, 254, 246;
+  --100: #dafeea;
+  --200: #b8fad7;
+  --300: #80f5b7;
+  --400: #41e791;
+  --400-op: 65, 231, 145;
+  --500: #19ce71;
+  --600: #0da054;
+  --700: #0f8649;
+  --800: #116a3d;
+  --900: #105734;
+  --950: #03301b;
+}
+
+.article__wrapper {
+  @apply flex flex-col items-center justify-center gap-4;
+
+  .article__title {
+    @apply text-vue-400 text-4xl font-bold;
+  }
+
+  .article__img {
+    @apply w-2/4 p-4 rounded-2xl;
+    box-shadow: 0 0 5px 1px rgba(var(--400-op), 0.4), 0 0 10px rgba(var(--50-op), 0.2);
+  }
+
+  .article__img .img {
+    filter: brightness(0);
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    transition: ease-in-out 0.2s;
+  }
+
+  .article__img .img.show {
+    filter: brightness(1);
+    transition: ease-in-out 0.2s;
+  }
+}
+
+.list__content {
+  @apply p-4 grid grid-cols-2 grid-rows-2 gap-4;
+
+  .list__item {
+    @apply px-4 py-2 bg-vue-200 bg-opacity-10 border-none outline-none rounded-lg;
+    &:not(:disabled):hover {
+      @apply bg-vue-300 bg-opacity-50;
+    }
+    transition: ease-in-out 0.2s;
+    &.active {
+      @apply bg-vue-300 bg-opacity-50;
+    }
+    &:disabled{
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.article__msg {
+  @apply text-4xl font-bold mb-4;
+}
+
+.btn {
+  @apply py-2 px-8 bg-vue-500 rounded-full hover:bg-vue-600 border-none;
+  transition: ease-in-out 0.2s;
+}
+
+.loader__content {
+  @apply w-full h-full flex items-center justify-center;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  --c: no-repeat radial-gradient(farthest-side, var(--500) 92%, #0000);
+  background:
+    var(--c) 50% 0,
+    var(--c) 50% 100%,
+    var(--c) 100% 50%,
+    var(--c) 0 50%;
+  background-size: 12px 12px;
+  animation: l12 1s infinite;
+}
+
+.loader::before {
+  margin: 4px;
+  filter: hue-rotate(45deg);
+  background-size: 8px 8px;
+  animation-timing-function: linear
+}
+
+@keyframes l12 {
+  100% {
+    transform: rotate(.5turn)
+  }
+}
+
+.fade-in {
+  animation: fade-in .4s ease-in-out both;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  animation: fade-out .4s ease-out both;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
