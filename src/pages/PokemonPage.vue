@@ -3,7 +3,7 @@
     <div class="loader"></div>
   </div>
   <article v-else class="article__wrapper fade-in">
-    <h1 class="article__title">Quien es ese Pokemon?git</h1>
+    <h1 class="article__title">Quien es ese Pokemon?</h1>
 
     <PokemonPicture :pokemonId="pokemon.id" :itsTrue="revelPokemon" />
 
